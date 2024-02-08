@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -11,7 +12,7 @@ const nextConfig = {
     ],
   },
   basePath: "/nextjs-github-pages",
-  output: 'export',
+  output: "export",
 };
 
 export default nextConfig;
