@@ -9,13 +9,13 @@ import Image from "next/image";
 
 export default function MainContent() {
   // Define state variables for the image
-  const [image, setImage] = useState("");
+  const [images, setImages] = useState([]);
   const [response, setResponse] = useState("");
 
   // Define a function to handle the POST request
   const handlePostRequest = async () => {
     // Send a POST request to the server
-    const response = await fetch("/api/image", {
+    const response = await fetch("/api/images", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,8 +24,9 @@ export default function MainContent() {
     });
     // Get the JSON from the response
     const json = await response.json();
+    console.log(json);
     // Set the result state variable
-    setImage(json.img);
+    setImages(json.img);
   };
 
   const handlePromptRequest = async () => {
@@ -53,7 +54,12 @@ export default function MainContent() {
       >
         Post data
       </button>
-      <Image src={image} alt="Generated image" width={50} height={50} />
+      <Image
+        src={images[0]?.url}
+        alt="Generated image"
+        width={50}
+        height={50}
+      />
       <p>{response}</p>
     </>
   );

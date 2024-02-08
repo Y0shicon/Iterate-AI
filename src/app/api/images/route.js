@@ -13,13 +13,14 @@ export async function POST(request) {
     const image = await openai.images.generate({
       model: "dall-e-2",
       prompt: "Gym app icon black and white",
-      quality: "standard",
-      size: "256x256",
+      quality: "better",
+      size: "1024x1024",
+      n: 3,
     });
 
     // Return the result of the completion
     return NextResponse.json({
-      img: image.data[0].url,
+      img: image.data,
     });
   } catch (error) {
     // Return an error response if there is an error
