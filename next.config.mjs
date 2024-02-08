@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
   },
+  basePath: "/nextjs-github-pages",
 };
 
 export default nextConfig;
