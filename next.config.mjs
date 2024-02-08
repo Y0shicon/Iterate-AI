@@ -11,6 +11,7 @@ const nextConfig = {
     ],
   },
   basePath: "/nextjs-github-pages",
+  output: 'export',
 };
 
 export default nextConfig;
