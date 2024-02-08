@@ -26,12 +26,33 @@ export default function MainContent() {
     const json = await response.json();
     // Set the result state variable
     setImage(json.img);
+  };
+
+  const handlePromptRequest = async () => {
+    // Send a POST request to the server
+    const response = await fetch("/api/prompt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+    // Get the JSON from the response
+    const json = await response.json();
+    // Set the result state variable
     setResponse(json.gptResponse);
   };
 
   return (
     <>
-      <button onClick={handlePostRequest}>Post data</button>
+      <button
+        onClick={() => {
+          handlePostRequest();
+          handlePromptRequest();
+        }}
+      >
+        Post data
+      </button>
       <Image src={image} alt="Generated image" width={50} height={50} />
       <p>{response}</p>
     </>
