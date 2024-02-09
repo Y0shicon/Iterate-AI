@@ -8,7 +8,6 @@ The Full-stack web app was made using Next.JS using Open AI models. The followin
 - [Usage](#usage)
 - [APIs](#apis)
 - [CI/CD](#cicd)
-- [Contributing](#contributing)
 
 ## Installation
 
