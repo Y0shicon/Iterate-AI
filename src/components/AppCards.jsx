@@ -12,8 +12,10 @@ import AppCard from "./AppCard";
 
 export default function AppCards() {
   const { response, images } = useSnapshot(state);
-  console.log(response, images);
 
+  if (response.length === 0 || images.length === 0) {
+    return null;
+  }
   const cards = response.map((response, index) => {
     return <AppCard key={index} response={response} image={images[index]} />;
   });
