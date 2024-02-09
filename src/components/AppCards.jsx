@@ -25,7 +25,7 @@ export default function AppCards() {
   });
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id="cardsWrapper">
       {state.isLoading ? (
         <CircularProgress color="#617afa" isIndeterminate />
       ) : (

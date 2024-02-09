@@ -44,12 +44,13 @@ To create a production build, use `npm run build`.
 
 OpenAI models were used and NextJS was used to implement two POST request which are sent at the time of clicking the `Generate` button.
 
-1. **api/images**: An API thats uses the `DALL-E 2` model to produce 3 ```256x256` logos for the app idea
+1. **api/images**: An API thats uses the `DALL-E 2` model to produce 3 `256x256` logos for the app idea
 2. **api/prompt**: An API that uses the `gpt-3.5-turbo-0125` model to produce 3 app ideas in a JSON format. The OpenAI Playground was used to fine-tune and tune the hyperparameters of the model.
 
 ## CI/CD
 
 This project uses GitHub Actions for continuous integration and vercel for continuous deployment. There are two workflows:
 
-1. **docker.yml**: This workflow builds a Docker image of the application and pushes it to Docker Hub. The docker hub where the image is pushed to is [here](https://hub.docker.com/repository/docker/yoshicon/iterate-ai/general)
+1. **docker.yml**: This workflow builds a Docker image of the application and pushes it to Docker Hub. The docker hub where the image is pushed to is [here](https://hub.docker.com/repository/docker/yoshicon/iterate-ai/general).
 2. **lint.yml**: This workflow runs ESLint on the codebase to catch any syntax errors or problematic patterns.
+
