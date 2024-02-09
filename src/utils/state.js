@@ -4,7 +4,7 @@ import { proxy } from "valtio";
 
 const state = proxy({
   images: [],
-  response: "",
+  response: [],
   profile: {
     name: "John Doe",
     image: "/static/profile.webp",

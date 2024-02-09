@@ -24,7 +24,6 @@ export default function GenerateButton() {
     });
     // Get the JSON from the response
     const json = await response.json();
-    console.log(json);
     // Set the result state variable
     state.images = json.img;
   };
@@ -45,7 +44,8 @@ export default function GenerateButton() {
     // Get the JSON from the response
     const json = await response.json();
     // Set the result state variable
-    state.response = JSON.parse(json.gptResponse);
+    const gptResponse = JSON.parse(json.gptResponse);
+    state.response = gptResponse.data;
   };
 
   return (

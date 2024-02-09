@@ -1,3 +1,5 @@
+"use client";
+
 // Importing styles
 import styles from "@styles/Textfield.module.scss";
 
