@@ -5,7 +5,7 @@ const OpenAI = require("openai");
 import { NextResponse } from "next/server";
 
 const model = "gpt-3.5-turbo-0125";
-let messages = [
+const messages = [
   {
     role: "system",
     content:
@@ -24,7 +24,7 @@ let messages = [
 
 export async function POST(request) {
   const { prompt } = await request.json();
-  messages = [
+  const newMessages = [
     ...messages,
     {
       role: "user",
@@ -38,7 +38,7 @@ export async function POST(request) {
     const response = await openai.chat.completions.create({
       model: model,
       response_format: { type: "json_object" },
-      messages: messages,
+      messages: newMessages,
       temperature: 0.8,
       max_tokens: 450,
       top_p: 1,

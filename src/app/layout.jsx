@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Iterate AI",
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/static/iterate_ai_logo.jpeg" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={rubik.className}>{children}</body>
     </html>
   );
 }
