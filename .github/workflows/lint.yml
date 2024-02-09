@@ -33,3 +33,6 @@ jobs:
         with:
           eslint: true
           prettier: false
+
+      - name: Also running next lint
+        run: npx next lint
