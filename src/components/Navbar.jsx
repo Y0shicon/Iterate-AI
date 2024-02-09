@@ -1,9 +1,13 @@
+import { HamButton } from "./HamButton";
 import styles from "@styles/Navbar.module.scss";
 
 // Import necessary libraries
 import Image from "next/image";
 import Link from "next/link";
+
+// Import components
 import Profile from "./Profile";
+import Hamburger from "./Hamburger";
 
 export default function Navbar() {
   return (
@@ -21,7 +25,9 @@ export default function Navbar() {
         <Link href="/about"> About </Link>
         <button className={styles.createButton}>Create</button>
         <Profile />
+        <HamButton />
       </div>
+      <Hamburger />
     </nav>
   );
 }

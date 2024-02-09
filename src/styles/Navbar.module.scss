@@ -99,3 +99,45 @@
     }
   }
 }
+
+.hamBut {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+
+  .hamLine {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+
+    transform-origin: 0% 50%;
+    transition: all 0.3s ease-in-out;
+
+    &:nth-child(1):global(.active) {
+      transform: translateY(-3px) rotate(45deg);
+    }
+    &:nth-child(3):global(.active) {
+      transform: translateY(3px) rotate(-45deg);
+    }
+  }
+
+  .hamLine:nth-child(2) {
+    width: 20px;
+    &:global(.active) {
+      width: 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  // all links that are not the hamburger menu
+  .links a,
+  .createButton,
+  .profileWrapper {
+    display: none;
+  }
+}
