@@ -7,6 +7,12 @@ import { useState } from "react";
 // Import the Image component from the next/image module
 import Image from "next/image";
 
+// Importing react components
+import Textfield from "./Textfield";
+
+// Import the styles
+import styles from "@styles/MainContent.module.scss";
+
 export default function MainContent() {
   // Define state variables for the image
   const [images, setImages] = useState([]);
@@ -45,14 +51,14 @@ export default function MainContent() {
   };
 
   return (
-    <section>
+    <section className={styles.generator}>
       <button
         onClick={() => {
           handlePostRequest();
           handlePromptRequest();
         }}
       >
-        Post data
+        Generate
       </button>
       <Image
         src={images[0]?.url}

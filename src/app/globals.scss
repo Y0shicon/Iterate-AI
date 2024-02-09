@@ -5,6 +5,8 @@
   --secondary-black: #212429;
   --primary: #617afa;
   --grey: #d6d6de;
+
+  --navbar-height: 80px;
 }
 
 * {
@@ -41,4 +43,11 @@ button {
   margin: 0;
   font: inherit;
   color: inherit;
+}
+
+.mainBody{
+  margin-top: var(--navbar-height);
+  
+  width: 100%;
+  height: 100%;
 }

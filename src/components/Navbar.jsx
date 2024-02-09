@@ -1,10 +1,9 @@
-"use client";
-
 import styles from "@styles/Navbar.module.scss";
 
 // Import necessary libraries
 import Image from "next/image";
 import Link from "next/link";
+import Profile from "./Profile";
 
 export default function Navbar() {
   return (
@@ -24,33 +23,5 @@ export default function Navbar() {
         <Profile />
       </div>
     </nav>
-  );
-}
-
-export function Profile() {
-  const handleClick = () => {
-    const profileViewer = document.querySelector(`.${styles.profileView}`);
-    profileViewer.classList.toggle(styles.active);
-  };
-  return (
-    <div className={styles.profileWrapper} onClick={handleClick}>
-      <div className={styles.profile}>
-        <Image
-          src="/static/profile.webp"
-          alt="Profile"
-          width={40}
-          height={40}
-        />
-      </div>
-      <div className={styles.profileView}>
-        <Image
-          src="/static/profile.webp"
-          alt="Profile"
-          width={40}
-          height={40}
-        />
-        <p>John Doe</p>
-      </div>
-    </div>
   );
 }
