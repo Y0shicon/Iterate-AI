@@ -5,30 +5,39 @@ const OpenAI = require("openai");
 import { NextResponse } from "next/server";
 
 const model = "gpt-3.5-turbo-0125";
-const messages = [
+let messages = [
   {
     role: "system",
     content:
-      "You will be provided with an app description. Your job is to come up with a 3 app ideas each of which consist of a name and a list of 3 to 4 features that the app could have in the following json format.\nName : \nFeatures : \n1. \n2.",
+      'You will be provided with an app description. Your job is to come up with 3 app ideas each of which consist of a name and a list of 3 to 4 features that the app could have.\nProve the answer in json format only following the schema :\n[{"name" : "<Name of the app>",\n"features" : [\n{"title" : "<Title of the feature>",\n"desc" : "<Description of the feature>"},]},\n{"name" : "<Name of the app>",\n"features" : [\n{"title" : "<Title of the feature>",\n"desc" : "<Description of the feature>"},]},\n{"name" : "<Name of the app>",\n"features" : [\n{"title" : "<Title of the feature>",\n"desc" : "<Description of the feature>"},]}\n]',
   },
   {
     role: "user",
-    content: "A gym app that tracks your workouts",
+    content: "A gym app which tracks your workouts",
   },
   {
     role: "assistant",
     content:
-      "App 1:\nName: FitTrack\nFeatures:\n1. Track Workouts: Users can log their workouts including exercises, sets, reps, and weights.\n2. Workout Plans: Provide pre-designed workout plans for different goals such as weight loss, muscle gain, or strength training.\n3. Progress Tracking: Show users their progress over time through charts and statistics.\n4. Personal Trainer: Connect users with certified trainers for personalized workout plans and guidance.\n\nApp 2:\nName: GymBuddy\nFeatures:\n1. Exercise Library: Provide a comprehensive library of exercises with detailed descriptions and videos for proper form.\n2. Workout Scheduler: Create and schedule personalized workout routines based on user preferences and fitness level.\n3. Social Community: Connect with other gym-goers, share progress photos, and provide support and motivation to each other.\n4. Workout Reminders: Set reminders for upcoming workouts to keep users consistent and accountable.\n\nApp 3:\nName: FitFolio\nFeatures:\n1. Workout Tracker: Automatically track and record workouts using GPS and sensors in the user's phone or wearable devices.\n2. Virtual Trainer: Use AI technology to guide users through their workouts, providing real-time feedback and corrections.\n3. Nutrition Tracking: Allow users to log and track their daily food intake to ensure a balanced diet.\n4. Challenges and Rewards: Offer challenges and rewards to keep users engaged and motivated, such as completing a certain number of workouts in a month to unlock special features or discounts.",
+      '[{"name": "FitTrack",\n   "features": [\n      {"title": "Workout Tracker",\n       "desc": "Allows users to track and log their workouts, including exercises, sets, reps, and weights."},\n      {"title": "Progress Monitoring",\n       "desc": "Provides visual and statistical analysis of progress over time, including graphs and charts."},\n      {"title": "Customized Workouts",\n       "desc": "Offers pre-made workout plans or the ability to create personalized workout routines."},\n      {"title": "Reminders and Notifications",\n       "desc": "Sends reminders and notifications to motivate users to stick to their workout schedule."}\n      ]},\n      \n   {"name": "FitLog",\n   "features": [\n      {"title": "Workout Diary",\n       "desc": "Allows users to keep a detailed diary of their workouts, including exercises, duration, and intensity."},\n      {"title": "Goal Setting",\n       "desc": "Enables users to set fitness goals and track their progress towards achieving them."},\n      {"title": "Community Support",\n       "desc": "Connects users with a community of fitness enthusiasts for support, motivation, and sharing workout tips."},\n      {"title": "Workout History",\n       "desc": "Keeps a record of past workouts for users to review and compare their performance over time."}\n      ]},\n      \n   {"name": "FitBuddy",\n   "features": [\n      {"title": "Workout Partner Finder",\n       "desc": "Helps users find workout partners based on location, fitness goals, and workout preferences."},\n      {"title": "Shared Workouts",\n       "desc": "Allows users to create and share workout routines with their workout buddies."},\n      {"title": "Motivational Challenges",\n       "desc": "Organizes fitness challenges and competitions between workout buddies to help motivate each other."},\n      {"title": "Messaging and Chat",\n       "desc": "Enables users to communicate and coordinate workouts with their workout partners through in-app messaging."}\n      ]}\n]',
   },
 ];
 
 export async function POST(request) {
+  const { prompt } = await request.json();
+  messages = [
+    ...messages,
+    {
+      role: "user",
+      content: prompt + "app idea",
+    },
+  ];
   try {
     // Create a new OpenAI object
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const response = await openai.chat.completions.create({
       model: model,
+      response_format: { type: "json_object" },
       messages: messages,
       temperature: 0.8,
       max_tokens: 450,

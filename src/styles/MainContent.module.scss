@@ -1,9 +1,17 @@
 .generator {
-  height: 50%;
+  height: 50svh;
   max-height: 300px;
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
 }

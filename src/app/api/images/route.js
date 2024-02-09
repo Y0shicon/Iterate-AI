@@ -6,15 +6,16 @@ import { NextResponse } from "next/server";
 
 // Return the result of the chat completion
 export async function POST(request) {
+  const { prompt } = await request.json();
   try {
     // Create a new OpenAI object
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     // Send a completion request to the OpenAI API
     const image = await openai.images.generate({
       model: "dall-e-2",
-      prompt: "Gym app icon",
+      prompt: prompt + "app idea icon stylish 2d modern",
       quality: "standard",
-      size: "512x512",
+      size: "256x256",
       n: 3,
     });
 
