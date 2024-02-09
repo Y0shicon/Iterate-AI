@@ -45,7 +45,7 @@ export default function MainContent() {
   };
 
   return (
-    <>
+    <main>
       <button
         onClick={() => {
           handlePostRequest();
@@ -61,6 +61,6 @@ export default function MainContent() {
         height={50}
       />
       <p>{response}</p>
-    </>
+    </main>
   );
 }

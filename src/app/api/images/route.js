@@ -12,9 +12,9 @@ export async function POST(request) {
     // Send a completion request to the OpenAI API
     const image = await openai.images.generate({
       model: "dall-e-2",
-      prompt: "Gym app icon black and white",
-      quality: "better",
-      size: "1024x1024",
+      prompt: "Gym app icon",
+      quality: "standard",
+      size: "512x512",
       n: 3,
     });
 
