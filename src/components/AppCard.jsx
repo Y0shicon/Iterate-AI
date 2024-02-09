@@ -5,8 +5,6 @@ import styles from "@styles/AppCards.module.scss";
 import Image from "next/image";
 
 export default function AppCard({ response, image }) {
-  console.log(response, image);
-
   const features = response.features.map((feature, index) => {
     return (
       <div key={index} className={styles.feature}>

@@ -12,6 +12,7 @@ const state = proxy({
   prompt: {
     text: "Write a story about a dragon",
   },
+  isLoading: false,
 });
 
 export default state;

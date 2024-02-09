@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
 
-  width: max(650px, 60%);
+  width: min(1100px, 90%);
 
   background-color: var(--secondary-black);
   border-radius: 10px;
@@ -35,5 +35,17 @@
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+
+    &:disabled {
+      background-color: var(--grey);
+      color: var(--primary);
+      cursor: not-allowed;
+    }
   }
 }

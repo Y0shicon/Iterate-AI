@@ -32,6 +32,10 @@
       transform: scale(1.02);
     }
 
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
     .content {
       display: flex;
       flex-direction: column;

@@ -13,7 +13,7 @@ export async function POST(request) {
     // Send a completion request to the OpenAI API
     const image = await openai.images.generate({
       model: "dall-e-2",
-      prompt: prompt + "app idea icon stylish 2d modern",
+      prompt: prompt + "app idea icon stylish 2d modern 1:1 aspect ratio",
       quality: "standard",
       size: "256x256",
       n: 3,

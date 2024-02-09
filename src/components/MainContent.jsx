@@ -5,6 +5,9 @@ import AppCards from "./AppCards";
 // Import the styles
 import styles from "@styles/MainContent.module.scss";
 
+// Chakra Provider
+import { ChakraProvider } from "@chakra-ui/react";
+
 export default function MainContent() {
   return (
     <>
@@ -13,7 +16,9 @@ export default function MainContent() {
         <Textfield />
       </section>
       <section className={styles.cardsWrapper}>
-        <AppCards />
+        <ChakraProvider>
+          <AppCards />
+        </ChakraProvider>
       </section>
     </>
   );

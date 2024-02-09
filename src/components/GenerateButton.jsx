@@ -8,9 +8,14 @@ import { useSnapshot } from "valtio";
 import state from "@/utils/state.js";
 
 export default function GenerateButton() {
+  const snap = useSnapshot(state);
+
   // Define a function to handle the POST request
   const handlePostRequest = async () => {
     const prompt = state.prompt;
+
+    // Reset the images state variable
+    state.images = [];
 
     // Send a POST request to the server
     const response = await fetch("/api/images", {
@@ -30,6 +35,9 @@ export default function GenerateButton() {
 
   const handlePromptRequest = async () => {
     const prompt = state.prompt;
+
+    // Reset the response state variable
+    state.response = [];
 
     // Send a POST request to the server
     const response = await fetch("/api/prompt", {
@@ -54,7 +62,9 @@ export default function GenerateButton() {
       onClick={() => {
         handlePostRequest();
         handlePromptRequest();
+        state.isLoading = true;
       }}
+      disabled={snap.isLoading}
     >
       Generate
     </button>
